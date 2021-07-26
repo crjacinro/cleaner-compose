@@ -8,7 +8,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 
-
 @Suppress("FunctionName")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

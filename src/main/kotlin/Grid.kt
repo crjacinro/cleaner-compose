@@ -29,7 +29,6 @@ fun RoombaGrid(gridType: GridType) {
     Box(modifier = boxModifier)
 }
 
-
 private fun getBorderStroke(gridType: GridType) =
     when (gridType) {
         GridType.BACKGROUND -> BorderStroke(1.dp, Color.Gray)
