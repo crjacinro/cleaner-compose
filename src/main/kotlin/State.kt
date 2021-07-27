@@ -1,20 +1,20 @@
 class State {
-    private var cell: MutableList<MutableList<CellData>> = mutableListOf()
+    private var grid: MutableList<MutableList<CellData>> = mutableListOf()
 
     init {
         clear()
     }
 
     private fun clear() {
-        cell = getInitGridState()
-        cell.addRandomWalls()
-        cell.addRoombaStart()
+        grid = getInitGridState()
+        grid.addRandomWalls()
+        grid.addRoombaStart()
     }
 
     fun findStartPosition(): Position? {
         for (i in 0 until WINDOW_WIDTH) {
             for (j in 0 until WINDOW_HEIGHT) {
-                if (cell[i][j].type == CellType.ROOMBA) {
+                if (grid[i][j].type == CellType.ROOMBA) {
                     return Position(i, j)
                 }
             }
@@ -22,17 +22,19 @@ class State {
         return null
     }
 
-    fun drawSnakeDataGrid(): List<List<CellData>> {
+    fun drawDataGrid(): List<List<CellData>> {
         val updatedGrid = getInitGridState()
 
         for (i in 0 until updatedGrid.size) {
             for (j in 0 until updatedGrid[i].size) {
-                updatedGrid[i][j] = cell[i][j]
+                updatedGrid[i][j] = grid[i][j]
             }
         }
 
         return updatedGrid
     }
+
+    fun getCurrentGrid(): List<List<CellData>> = grid
 }
 
 fun getInitGridState(): MutableList<MutableList<CellData>> {

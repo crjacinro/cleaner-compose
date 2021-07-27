@@ -19,7 +19,7 @@ fun main() = application {
         size = IntSize(WINDOW_SIZE, WINDOW_SIZE + WINDOW_HEIGHT_OFFSET),
         centered = true
     ) {
-        val grid = remember { mutableStateOf(appState.drawSnakeDataGrid()) }
+        val grid = remember { mutableStateOf(appState.drawDataGrid()) }
 
         RoombaApp(grid.value)
 
