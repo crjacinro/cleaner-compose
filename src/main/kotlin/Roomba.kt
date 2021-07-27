@@ -11,16 +11,16 @@ import androidx.compose.ui.Alignment
 @Suppress("FunctionName")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun RoombaApp(grid: List<List<GridType>>) {
-    SnakeWindow(grid.toLinearList())
+fun RoombaApp(cell: List<List<CellData>>) {
+    SnakeWindow(cell.toLinearList())
 }
 
 @Suppress("FunctionName")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SnakeWindow(gridData: List<GridType>) {
+fun SnakeWindow(cellData: List<CellData>) {
     LazyVerticalGrid(cells = GridCells.Fixed(NUMBER_OF_GRIDS_PER_SIDE)) {
-        items(gridData) {
+        items(cellData) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 RoombaGrid(it)
             }
