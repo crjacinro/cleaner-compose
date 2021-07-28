@@ -7,9 +7,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.window.application
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
 val appState = State()
+private val scope = CoroutineScope(Dispatchers.Default)
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() = application {
@@ -25,8 +30,12 @@ fun main() = application {
 
         LaunchedEffect(Unit) {
             while (true) {
-                delay(SPEED.toLong())
+                delay(SPEED)
+                grid.value = appState.drawDataGrid()
             }
+        }
+        scope.launch {
+            startBfs(appState)
         }
     }
 }

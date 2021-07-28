@@ -16,4 +16,4 @@ val VISITED_COLOR = Color.Cyan
 val BACKGROUND_COLOR = Color.White
 val ROOMBA_COLOR = Color.Red
 
-const val SPEED = 80
+const val SPEED = 10.toLong()

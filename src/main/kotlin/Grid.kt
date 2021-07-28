@@ -10,7 +10,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 enum class CellType {
-    VISITED,
     WALL,
     ROOMBA,
     PATH,
@@ -22,29 +21,31 @@ enum class CellType {
 fun RoombaGrid(cellData: CellData) {
     val boxModifier = Modifier
         .padding(0.dp)
-        .border(getBorderStroke(cellData.type))
+        .border(getBorderStroke(cellData))
         .size(GRID_SIZE_DP)
-        .background(getBackground(cellData.type))
+        .background(getBackground(cellData))
 
     Box(modifier = boxModifier)
 }
 
-private fun getBorderStroke(cellType: CellType) =
-    when (cellType) {
-        CellType.BACKGROUND -> BorderStroke(1.dp, Color.Gray)
-        CellType.VISITED -> BorderStroke(0.dp, VISITED_COLOR)
-        CellType.WALL -> BorderStroke(0.dp, WALL_COLOR)
-        CellType.PATH -> BorderStroke(0.dp, PATH_COLOR)
-        CellType.ROOMBA -> BorderStroke(0.dp, ROOMBA_COLOR)
+private fun getBorderStroke(cell: CellData) =
+    when {
+        cell.type == CellType.ROOMBA -> BorderStroke(0.dp, ROOMBA_COLOR)
+        cell.isVisited -> BorderStroke(0.dp, VISITED_COLOR)
+        cell.type == CellType.BACKGROUND -> BorderStroke(1.dp, Color.Gray)
+        cell.type == CellType.WALL -> BorderStroke(0.dp, WALL_COLOR)
+        cell.type == CellType.PATH -> BorderStroke(0.dp, PATH_COLOR)
+        else -> BorderStroke(1.dp, Color.Gray)
     }
 
-private fun getBackground(cellType: CellType) =
-    when (cellType) {
-        CellType.BACKGROUND -> BACKGROUND_COLOR
-        CellType.VISITED -> VISITED_COLOR
-        CellType.WALL -> WALL_COLOR
-        CellType.PATH -> PATH_COLOR
-        CellType.ROOMBA -> ROOMBA_COLOR
+private fun getBackground(cell: CellData) =
+    when {
+        cell.type == CellType.ROOMBA -> ROOMBA_COLOR
+        cell.isVisited -> VISITED_COLOR
+        cell.type == CellType.BACKGROUND -> BACKGROUND_COLOR
+        cell.type == CellType.WALL -> WALL_COLOR
+        cell.type == CellType.PATH -> PATH_COLOR
+        else -> BACKGROUND_COLOR
     }
 
 fun List<List<CellData>>.toLinearList(): List<CellData> {
