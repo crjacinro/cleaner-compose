@@ -5,7 +5,7 @@ suspend fun startBfs(gridState: State) {
     val queue = mutableListOf(start)
     val visited = mutableSetOf<Position>()
 
-    while(queue.isNotEmpty()){
+    for(i in 0..200){
         val position = queue.shift()
 
         visited.add(position)

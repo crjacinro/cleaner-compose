@@ -30,8 +30,8 @@ fun RoombaGrid(cellData: CellData) {
 
 private fun getBorderStroke(cell: CellData) =
     when {
-        cell.type == CellType.ROOMBA -> BorderStroke(0.dp, ROOMBA_COLOR)
         cell.isVisited -> BorderStroke(0.dp, VISITED_COLOR)
+        cell.type == CellType.ROOMBA -> BorderStroke(0.dp, ROOMBA_COLOR)
         cell.type == CellType.BACKGROUND -> BorderStroke(1.dp, Color.Gray)
         cell.type == CellType.WALL -> BorderStroke(0.dp, WALL_COLOR)
         cell.type == CellType.PATH -> BorderStroke(0.dp, PATH_COLOR)
@@ -40,20 +40,20 @@ private fun getBorderStroke(cell: CellData) =
 
 private fun getBackground(cell: CellData) =
     when {
-        cell.type == CellType.ROOMBA -> ROOMBA_COLOR
         cell.isVisited -> VISITED_COLOR
+        cell.type == CellType.ROOMBA -> ROOMBA_COLOR
         cell.type == CellType.BACKGROUND -> BACKGROUND_COLOR
         cell.type == CellType.WALL -> WALL_COLOR
         cell.type == CellType.PATH -> PATH_COLOR
         else -> BACKGROUND_COLOR
     }
 
-fun List<List<CellData>>.toLinearList(): List<CellData> {
+fun List<List<CellData>>.toLinearList(): MutableList<CellData> {
     val mutableList = mutableListOf<CellData>()
     for (i in this.indices) {
         for (j in this[i].indices) {
             mutableList.add(this[i][j])
         }
     }
-    return mutableList.toList()
+    return mutableList
 }

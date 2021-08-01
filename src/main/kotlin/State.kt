@@ -40,7 +40,7 @@ class State {
         grid[p.row][p.column] = getCellAtPosition(p).copy(isVisited = true)
     }
 
-    fun getCellAtPosition(p: Position) = grid[p.row][p.column]
+    private fun getCellAtPosition(p: Position) = grid[p.row][p.column]
 }
 
 fun getInitGridState(): MutableList<MutableList<CellData>> {
