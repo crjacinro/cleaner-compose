@@ -10,7 +10,7 @@ fun MutableList<MutableList<CellData>>.addRoombaStart() {
     val i = (0..WINDOW_WIDTH).random()
     val j = (0..WINDOW_HEIGHT).random()
 
-    this[i][j] = CellData(CellType.ROOMBA, Position(i, j))
+    this[i][j] = CellData(CellType.WALL, Position(i, j), isRoomba = true)
 }
 
 fun MutableList<Position>.shift(): Position {

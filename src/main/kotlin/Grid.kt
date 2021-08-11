@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 
 enum class CellType {
     WALL,
-    ROOMBA,
     PATH,
     BACKGROUND
 }
@@ -30,8 +29,8 @@ fun RoombaGrid(cellData: CellData) {
 
 private fun getBorderStroke(cell: CellData) =
     when {
+        cell.isRoomba  -> BorderStroke(0.dp, ROOMBA_COLOR)
         cell.isVisited -> BorderStroke(0.dp, VISITED_COLOR)
-        cell.type == CellType.ROOMBA -> BorderStroke(0.dp, ROOMBA_COLOR)
         cell.type == CellType.BACKGROUND -> BorderStroke(1.dp, Color.Gray)
         cell.type == CellType.WALL -> BorderStroke(0.dp, WALL_COLOR)
         cell.type == CellType.PATH -> BorderStroke(0.dp, PATH_COLOR)
@@ -40,8 +39,8 @@ private fun getBorderStroke(cell: CellData) =
 
 private fun getBackground(cell: CellData) =
     when {
+        cell.isRoomba -> ROOMBA_COLOR
         cell.isVisited -> VISITED_COLOR
-        cell.type == CellType.ROOMBA -> ROOMBA_COLOR
         cell.type == CellType.BACKGROUND -> BACKGROUND_COLOR
         cell.type == CellType.WALL -> WALL_COLOR
         cell.type == CellType.PATH -> PATH_COLOR

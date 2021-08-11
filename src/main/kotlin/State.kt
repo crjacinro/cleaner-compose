@@ -1,5 +1,9 @@
+import kotlinx.coroutines.delay
+
 class State {
     private var grid: MutableList<MutableList<CellData>> = mutableListOf()
+    private var previousRoombaPosition: Position = Position(0,0)
+    private var roombaPosition: Position = Position(0,0)
 
     init {
         clear()
@@ -14,8 +18,9 @@ class State {
     fun findStartPosition(): Position? {
         for (i in 0 until WINDOW_WIDTH) {
             for (j in 0 until WINDOW_HEIGHT) {
-                if (grid[i][j].type == CellType.ROOMBA) {
-                    return Position(i, j)
+                if (grid[i][j].isRoomba) {
+                    roombaPosition = Position(i,j)
+                    return roombaPosition
                 }
             }
         }
@@ -37,7 +42,13 @@ class State {
     fun getCurrentGrid(): List<List<CellData>> = grid
 
     fun setCellVisitedAtPosition(p: Position) {
-        grid[p.row][p.column] = getCellAtPosition(p).copy(isVisited = true)
+        grid[p.row][p.column] = getCellAtPosition(p).copy(isVisited = true, isRoomba = true)
+    }
+
+    suspend fun moveRooomba(p: Position){
+        grid[p.row][p.column] = getCellAtPosition(p).copy(isRoomba = true)
+        delay(SPEED+50)
+        grid[p.row][p.column] = getCellAtPosition(p).copy(isRoomba = false)
     }
 
     private fun getCellAtPosition(p: Position) = grid[p.row][p.column]

@@ -2,7 +2,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 const val GRID_SIZE = 15
-const val WINDOW_SIZE = GRID_SIZE * 25
+const val WINDOW_SIZE = GRID_SIZE * 8
 const val WINDOW_HEIGHT_OFFSET = 22
 const val NUMBER_OF_GRIDS_PER_SIDE = WINDOW_SIZE.div(GRID_SIZE)
 const val WINDOW_WIDTH = NUMBER_OF_GRIDS_PER_SIDE
