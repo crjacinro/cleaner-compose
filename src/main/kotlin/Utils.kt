@@ -13,12 +13,6 @@ fun MutableList<MutableList<CellData>>.addRoombaStart() {
     this[i][j] = CellData(CellType.WALL, Position(i, j), isRoomba = true)
 }
 
-fun MutableList<Position>.shift(): Position {
-    val first = this.first()
-    this.removeAt(0)
-    return first
-}
-
 fun weightedRandomWall(): CellType {
     val random = (0..100).random()
     return if (random in 0..80) CellType.BACKGROUND else CellType.WALL

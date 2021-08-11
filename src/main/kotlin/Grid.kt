@@ -29,7 +29,7 @@ fun RoombaGrid(cellData: CellData) {
 
 private fun getBorderStroke(cell: CellData) =
     when {
-        cell.isRoomba  -> BorderStroke(0.dp, ROOMBA_COLOR)
+        cell.isRoomba -> BorderStroke(0.dp, ROOMBA_COLOR)
         cell.isVisited -> BorderStroke(0.dp, VISITED_COLOR)
         cell.type == CellType.BACKGROUND -> BorderStroke(1.dp, Color.Gray)
         cell.type == CellType.WALL -> BorderStroke(0.dp, WALL_COLOR)

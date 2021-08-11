@@ -43,6 +43,6 @@ fun RoombaWindow() {
     }
     LaunchedEffect(Unit, scope) {
         delay(2_000)
-        startBfs(appState)
+        startDfs(appState)
     }
 }

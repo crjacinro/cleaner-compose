@@ -1,24 +1,21 @@
-import kotlinx.coroutines.delay
-
-suspend fun startBfs(gridState: State) {
+suspend fun startDfs(gridState: State) {
     val start = gridState.findStartPosition() as Position
     val queue = mutableListOf(start)
     val visited = mutableSetOf<Position>()
 
-    while(queue.isNotEmpty()){
-        val position = queue.shift()
+    while (queue.isNotEmpty()) {
+        val position = queue.removeLast()
         visited.add(position)
 
         gridState.setCellVisitedAtPosition(position)
         gridState.moveRooomba(position)
 
         val neighbors = getValidNeighbors(position, gridState.getCurrentGrid())
-        for(each in neighbors){
-            if(visited.none { it.row == each.position.row && it.column == each.position.column }){
+        for (each in neighbors) {
+            if (visited.none { it.row == each.position.row && it.column == each.position.column }) {
                 queue.add(each.position)
             }
         }
-
     }
 }
 
