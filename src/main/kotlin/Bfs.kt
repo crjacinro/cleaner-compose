@@ -5,12 +5,12 @@ suspend fun startBfs(gridState: State) {
     val queue = mutableListOf(start)
     val visited = mutableSetOf<Position>()
 
-    for(i in 0..200){
+    while(queue.isNotEmpty()){
         val position = queue.shift()
-
         visited.add(position)
 
         gridState.setCellVisitedAtPosition(position)
+        gridState.moveRooomba(position)
 
         val neighbors = getValidNeighbors(position, gridState.getCurrentGrid())
         for(each in neighbors){
@@ -18,8 +18,7 @@ suspend fun startBfs(gridState: State) {
                 queue.add(each.position)
             }
         }
-        delay(SPEED)
-        println("inside bfs queue: ${queue.size}")
+
     }
 }
 
