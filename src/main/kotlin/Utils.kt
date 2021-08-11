@@ -7,8 +7,8 @@ fun MutableList<MutableList<CellData>>.addRandomWalls() {
 }
 
 fun MutableList<MutableList<CellData>>.addRoombaStart() {
-    val i = (0..WINDOW_WIDTH).random()
-    val j = (0..WINDOW_HEIGHT).random()
+    val i = (0 until WINDOW_WIDTH).random()
+    val j = (0 until WINDOW_HEIGHT).random()
 
     this[i][j] = CellData(CellType.WALL, Position(i, j), isRoomba = true)
 }
