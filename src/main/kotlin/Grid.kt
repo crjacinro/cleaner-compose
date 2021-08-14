@@ -17,7 +17,7 @@ enum class CellType {
 
 @Suppress("FunctionName")
 @Composable
-fun RoombaGrid(cellData: CellData) {
+fun CleanerGrid(cellData: CellData) {
     val boxModifier = Modifier
         .padding(0.dp)
         .border(BorderStroke(1.dp, Color.Gray))
@@ -29,7 +29,7 @@ fun RoombaGrid(cellData: CellData) {
 
 private fun getBackground(cell: CellData) =
     when {
-        cell.isRoomba -> ROOMBA_COLOR
+        cell.isCleaner -> ROOMBA_COLOR
         cell.isVisited -> VISITED_COLOR
         cell.type == CellType.BACKGROUND -> BACKGROUND_COLOR
         cell.type == CellType.WALL -> WALL_COLOR

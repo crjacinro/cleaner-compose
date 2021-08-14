@@ -19,21 +19,21 @@ private val scope = CoroutineScope(Dispatchers.Default)
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() = application {
     Window(
-        title = "Roomba using Jetpack Compose",
+        title = "Cleaner using Jetpack Compose",
         resizable = false,
         size = IntSize(WINDOW_SIZE, WINDOW_SIZE + WINDOW_HEIGHT_OFFSET),
         centered = true
     ) {
-        RoombaWindow()
+        CleanerWindow()
     }
 }
 
 @Suppress("FunctionName")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun RoombaWindow() {
+fun CleanerWindow() {
     val grid = remember { mutableStateOf(appState.drawDataGrid()) }
-    RoombaApp(grid.value)
+    CleanerApp(grid.value)
 
     LaunchedEffect(Unit) {
         while (true) {

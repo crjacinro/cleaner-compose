@@ -5,5 +5,5 @@ pluginManagement {
     }
     
 }
-rootProject.name = "Roomba-Compose"
+rootProject.name = "Cleaner-Compose"
 

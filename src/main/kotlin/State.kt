@@ -2,7 +2,7 @@ import kotlinx.coroutines.delay
 
 class State {
     private var grid: MutableList<MutableList<CellData>> = mutableListOf()
-    private var previousRoombaPosition: Position = Position(0, 0)
+    private var previousCleanerPosition: Position = Position(0, 0)
     private var roombaPosition: Position = Position(0, 0)
 
     init {
@@ -12,13 +12,13 @@ class State {
     private fun clear() {
         grid = getInitGridState()
         grid.addRandomWalls()
-        grid.addRoombaStart()
+        grid.addCleanerStart()
     }
 
     fun findStartPosition(): Position? {
         for (i in 0 until WINDOW_WIDTH) {
             for (j in 0 until WINDOW_HEIGHT) {
-                if (grid[i][j].isRoomba) {
+                if (grid[i][j].isCleaner) {
                     roombaPosition = Position(i, j)
                     return roombaPosition
                 }
@@ -42,13 +42,13 @@ class State {
     fun getCurrentGrid(): List<List<CellData>> = grid
 
     fun setCellVisitedAtPosition(p: Position) {
-        grid[p.row][p.column] = getCellAtPosition(p).copy(isVisited = true, isRoomba = true)
+        grid[p.row][p.column] = getCellAtPosition(p).copy(isVisited = true, isCleaner = true)
     }
 
-    suspend fun moveRooomba(p: Position) {
-        grid[p.row][p.column] = getCellAtPosition(p).copy(isRoomba = true)
+    suspend fun moveCleaner(p: Position) {
+        grid[p.row][p.column] = getCellAtPosition(p).copy(isCleaner = true)
         delay(SPEED + 50)
-        grid[p.row][p.column] = getCellAtPosition(p).copy(isRoomba = false)
+        grid[p.row][p.column] = getCellAtPosition(p).copy(isCleaner = false)
     }
 
     private fun getCellAtPosition(p: Position) = grid[p.row][p.column]

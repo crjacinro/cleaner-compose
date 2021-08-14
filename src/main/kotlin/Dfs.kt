@@ -8,7 +8,7 @@ suspend fun startDfs(gridState: State) {
         visited.add(position)
 
         gridState.setCellVisitedAtPosition(position)
-        gridState.moveRooomba(position)
+        gridState.moveCleaner(position)
 
         val neighbors = getValidNeighbors(position, gridState.getCurrentGrid())
         for (each in neighbors) {

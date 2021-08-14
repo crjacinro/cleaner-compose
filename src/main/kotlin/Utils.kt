@@ -6,11 +6,11 @@ fun MutableList<MutableList<CellData>>.addRandomWalls() {
     }
 }
 
-fun MutableList<MutableList<CellData>>.addRoombaStart() {
+fun MutableList<MutableList<CellData>>.addCleanerStart() {
     val i = (0 until WINDOW_WIDTH).random()
     val j = (0 until WINDOW_HEIGHT).random()
 
-    this[i][j] = CellData(CellType.WALL, Position(i, j), isRoomba = true)
+    this[i][j] = CellData(CellType.WALL, Position(i, j), isCleaner = true)
 }
 
 fun weightedRandomWall(): CellType {

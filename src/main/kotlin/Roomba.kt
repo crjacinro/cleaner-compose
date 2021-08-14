@@ -11,18 +11,18 @@ import androidx.compose.ui.Alignment
 @Suppress("FunctionName")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun RoombaApp(cell: List<List<CellData>>) {
-    RoombaWindow(cell.toLinearList())
+fun CleanerApp(cell: List<List<CellData>>) {
+    CleanerWindow(cell.toLinearList())
 }
 
 @Suppress("FunctionName")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun RoombaWindow(cellData: List<CellData>) {
+fun CleanerWindow(cellData: List<CellData>) {
     LazyVerticalGrid(cells = GridCells.Fixed(NUMBER_OF_GRIDS_PER_SIDE)) {
         items(cellData) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                RoombaGrid(it)
+                CleanerGrid(it)
             }
         }
     }
