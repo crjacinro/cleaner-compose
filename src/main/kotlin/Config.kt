@@ -1,7 +1,7 @@
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-const val SQUARE_SIZE = 25
+const val SQUARE_SIZE = 15
 const val GRID_SIZE = 15
 const val WINDOW_SIZE = GRID_SIZE * SQUARE_SIZE
 const val WINDOW_HEIGHT_OFFSET = 22
