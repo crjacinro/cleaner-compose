@@ -42,7 +42,7 @@ fun CleanerWindow() {
         }
     }
     LaunchedEffect(Unit, scope) {
-        delay(2_000)
+        delay(8_000)
         startDfs(appState)
     }
 }
