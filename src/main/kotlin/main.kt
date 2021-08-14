@@ -19,7 +19,7 @@ private val scope = CoroutineScope(Dispatchers.Default)
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() = application {
     Window(
-        title = "Cleaner using Jetpack Compose",
+        title = "Cleaner using Compose",
         resizable = false,
         size = IntSize(WINDOW_SIZE, WINDOW_SIZE + WINDOW_HEIGHT_OFFSET),
         centered = true
