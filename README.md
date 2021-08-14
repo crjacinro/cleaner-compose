@@ -1,6 +1,6 @@
-# cleaner-compose
-Cleaner Compose is a visualization of a 2d grid cleaner who wants to clean the entire room. 
-The catch is to avoid the walls and to clean all the possible areas reachable by the cleaner starting point.
+# Cleaner Compose
+Cleaner Compose is a visualization of a 2D grid cleaner with the objective to clean the entire room. 
+The catch is to avoid the walls and to clean all the possible areas reachable by the starting point of the cleaner.
 
 The algorithm used to traverse the room is Depth-First Search.
 
