@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 
 enum class CellType {
     WALL,
-    PATH,
     BACKGROUND
 }
 
@@ -33,7 +32,6 @@ private fun getBackground(cell: CellData) =
         cell.isVisited -> VISITED_COLOR
         cell.type == CellType.BACKGROUND -> BACKGROUND_COLOR
         cell.type == CellType.WALL -> WALL_COLOR
-        cell.type == CellType.PATH -> PATH_COLOR
         else -> BACKGROUND_COLOR
     }
 
