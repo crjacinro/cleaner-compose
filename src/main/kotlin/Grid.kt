@@ -20,22 +20,12 @@ enum class CellType {
 fun RoombaGrid(cellData: CellData) {
     val boxModifier = Modifier
         .padding(0.dp)
-        .border(getBorderStroke(cellData))
+        .border(BorderStroke(1.dp, Color.Gray))
         .size(GRID_SIZE_DP)
         .background(getBackground(cellData))
 
     Box(modifier = boxModifier)
 }
-
-private fun getBorderStroke(cell: CellData) =
-    when {
-        cell.isRoomba -> BorderStroke(0.dp, ROOMBA_COLOR)
-        cell.isVisited -> BorderStroke(0.dp, VISITED_COLOR)
-        cell.type == CellType.BACKGROUND -> BorderStroke(1.dp, Color.Gray)
-        cell.type == CellType.WALL -> BorderStroke(0.dp, WALL_COLOR)
-        cell.type == CellType.PATH -> BorderStroke(0.dp, PATH_COLOR)
-        else -> BorderStroke(1.dp, Color.Gray)
-    }
 
 private fun getBackground(cell: CellData) =
     when {
